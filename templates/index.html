@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <!-- mars data -->
+    <div class="row" id="mars-news">
+      <div class="col-md-12">
+        <h2 class="heading">Latest Mars News</h2>
+        <h4 class="heading">{{ mars.news_title }}</h4>
+        <p>{{ mars.news_p }}</p>
+      </div>
+    </div>
+    <div class="row" id="mars-featured-image">
+      <div class="col-md-8">
+        <h2 class="heading">Featured Mars Image</h2>
+        <!-- variable here -->
+        <img class="img-fluid" src="{{ mars.featured_image_url }}" alt="Featured Mars Image">
+      </div>
+      <div class="col-md-4 card">
+        <h3 class="card-title">Current Weather on Mars</h3>
+        <!-- variable here -->
+        <p>{{ mars.mars_weather }}</p>
+       <!-- variable here -->
+       <div>
+         {{ mars.html_table | safe }}
+       </div>        
+
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">Mars Hemispheres</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <figure class="figure">
+                      <!-- variable here -->
+                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif" class="figure-img img-fluid rounded" alt="Cerberus Hemisphere Enhanced.">
+                        <figcaption class="figure-caption">Cerberus Hemisphere Enhanced</figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <figure class="figure">
+                        <!-- variable here -->
+                          <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif" class="figure-img img-fluid rounded" alt="Schiaparelli Hemisphere Enhanced">
+                          <figcaption class="figure-caption">Schiaparelli Hemisphere Enhanced</figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <figure class="figure">
+                      <!-- variable here -->
+                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif" class="figure-img img-fluid rounded" alt="Syrtis Major Hemisphere Enhanced">
+                        <figcaption class="figure-caption">Syrtis Major Hemisphere Enhanced</figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <figure class="figure">
+                        <!-- variable here -->
+                          <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif" class="figure-img img-fluid rounded" alt="Valles Marineris Hemisphere Enhanced">
+                          <figcaption class="figure-caption">Valles Marineris Hemisphere Enhanced</figcaption>
+                    </figure>
+                </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+
+  </div>
+</body>
+
+</html>
+<!-- 
+<div class="row">
+  <div class="col-sm-12  col-md-8">
+    <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Summary: Latitude vs. X</h2>
+          <hr>
+          <img class="img-fluid float-left" src="assets/images/temperaturemap.png" alt="Tempurature Map" width="50%">
+          <p class="card-text">The purpose of this project was to analyze how weather changes as you 
+            get close to the equator. To accomplish this analysis, we first pulled data from the
+            OpenWeatherMap API to assemble a dataset on over 500 cities.</p>
+          <p class="card-text">After assembling the dataset, we used Matplotlib to plot various aspects
+            of the weather vs. latitude. Factors we looked at included: temperature, cloudiness, wind 
+            speed, and humidity. This site provides the source data and visualizations created as part
+            of the analysis, as well as explanations and descriptions of any trends and correlations 
+            witnessed..</p>
+        </div>
+      </div>
+  </div>
+  <div class="col-sm-12 col-md-4">
+      <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Visualizations</h3>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3 col-md-6">
+                  <img class="img-fluid" src="assets/images/temperaturemap.png" alt="Tempurature Map">
+                </div>
+                <div class="col-sm-3 col-md-6">
+                    <img class="img-fluid" src="assets/images/cloudymap.png" alt="Tempurature Map">
+                </div>
+                <div class="col-sm-3 col-md-6">
+                    <img class="img-fluid" src="assets/images/humiditymap.png" alt="Tempurature Map">
+                  </div>
+                  <div class="col-sm-3 col-md-6">
+                      <img class="img-fluid" src="assets/images/windmap.png" alt="Tempurature Map">
+ -->
